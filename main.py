@@ -112,8 +112,8 @@ if st.button("🎯 Analyze / Generate", use_container_width=True):
     else:
         with st.spinner("🔎 Processing with expert agents..."):
             full_prompt = user_input
-            if poetry_type != "General":
-                full_prompt = f"Please analyze this {poetry_type.lower()} poetry:\n\n{user_input}"
+            # if poetry_type != "General":
+            #     full_prompt = f"Please analyze this {poetry_type.lower()} poetry:\n\n{user_input}"
             result = asyncio.run(analyze_poetry(full_prompt))
             st.success("✅ Analysis Complete!")
 
