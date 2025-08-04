@@ -10,7 +10,7 @@ load_dotenv()
 # --- TOOL FUNCTION ---
 @function_tool
 def analyzer_poem(poem: str) -> str:
-    url = "https://poetrydb.org/author/Shakespeare, https://poetrydb.org/random, https://poetrydb.org/lines/beauty"
+    url = "https://poetrydb.org/random"
     payload = {"poem": poem}
     headers = {"Content-Type": "application/json"}
     response = requests.post(url, json=payload, headers=headers)
