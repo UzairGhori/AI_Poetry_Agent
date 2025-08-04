@@ -4,14 +4,16 @@ from agents import Agent, Runner, function_tool
 from dotenv import load_dotenv
 import requests
 from connection import config
+import os
 
 load_dotenv()
+gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 # --- TOOL FUNCTION ---
 @function_tool
 def get_poemist_poem() -> str:
     """Fetch a poem using Poemist API (requires key)."""
-    headers = {"Authorization": f"Bearer {API_KEY}"}
+    headers = {"Authorization": f"Bearer {gemini_api_key}"}
     res = requests.get("https://www.poemist.com/api/v1/randompoems", headers=headers)
     poem = res.json()[0]
     return f"{poem['title']} by {poem['poet']['name']}\n\n{poem['content']}"
@@ -42,7 +44,7 @@ Poetry_Agent = Agent(
         - For analysis, use the analyzer_poem tool.
         - You can also always reply in Roman Urdu if needed.
     """,
-    tools=[analyzer_poem],
+    tools=[get_poemist_poem],
     handoffs=[Lyric_poetry, Narrative_poetry, Dramatic_poetry],
 )
 
