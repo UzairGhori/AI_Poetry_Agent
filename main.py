@@ -98,9 +98,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- UI LAYOUT ---
-st.subheader("🔍 Poetry Mode")
-poetry_type = st.selectbox("Choose the Poetry Category", ["General", "Lyric", "Narrative", "Dramatic"])
+# # --- UI LAYOUT ---
+# st.subheader("🔍 Poetry Mode")
+# poetry_type = st.selectbox("Choose the Poetry Category", ["General", "Lyric", "Narrative", "Dramatic"])
 
 with st.expander("✍️ Write or Paste Your Poem / Query"):
     user_input = st.text_area("Your poetic text", placeholder="Paste or write your poem here...", height=220)
