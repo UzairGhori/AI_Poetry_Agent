@@ -9,14 +9,12 @@ load_dotenv()
 
 # --- TOOL FUNCTION ---
 @function_tool
-def analyzer_poem(poem: str) -> str:
-    url = "https://poetrydb.org/random"
-    payload = {"poem": poem}
-    headers = {"Content-Type": "application/json"}
-    response = requests.post(url, json=payload, headers=headers)
-    if response.status_code == 200:
-        return response.json().get("analysis", "No analysis available.")
-    return "Analysis failed or endpoint not working."
+def get_poemist_poem() -> str:
+    """Fetch a poem using Poemist API (requires key)."""
+    headers = {"Authorization": f"Bearer {API_KEY}"}
+    res = requests.get("https://www.poemist.com/api/v1/randompoems", headers=headers)
+    poem = res.json()[0]
+    return f"{poem['title']} by {poem['poet']['name']}\n\n{poem['content']}"
 
 # --- AGENTS ---
 Lyric_poetry = Agent(
