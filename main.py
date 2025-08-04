@@ -99,7 +99,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # # --- UI LAYOUT ---
-# st.subheader("🔍 Poetry Mode")
+st.subheader("🔍 Poetry Mode")
 # poetry_type = st.selectbox("Choose the Poetry Category", ["General", "Lyric", "Narrative", "Dramatic"])
 
 with st.expander("✍️ Write or Paste Your Poem / Query"):
